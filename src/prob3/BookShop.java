@@ -23,9 +23,24 @@ public class BookShop {
 		int num = key.nextInt();
 		
 		// 입력된 번호에 맞는 책을 찾아 대여 되었음(상태코드=0)을 체크 합니다.
+		switch(books[num-1].getStateCode()){
+		case 0:
+			System.out.println("대여중입니다.");
+		case 1:
+			books[num-1].rent();
+		}
 
 		System.out.println("*****도서 정보 출력하기******");
-		displayBookInfo(books);
-	}
+		displayBookInfo(books);		
 
+	}
+	
+	static void displayBookInfo(Book[] books){
+
+		for(int i=0; i<books.length ; i++){
+			System.out.print("책 제목:"+books[i].getTitle()+", 작가:"+books[i].getAuthor()+", 대여 유무:");
+			books[i].print();
+		}
+		
+	}
 }
